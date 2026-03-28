@@ -1,6 +1,5 @@
 MIT License
-
-Copyright (c) 2020 Guntram Blohm
+Copyright (c) Guntram Blohm
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +18,31 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+-------------------------------------------------------------------------------
+BEFORE READING THE PORTED VERSION LICENSE YOU SHOULD KNOW THAT ENFLKY EQUALS "enflkyls" AND THE PARTS THAT SAYS "ENFLKY" IS ALSO REFERRING TO "enflkyls"
+
+ADDITIONAL TERMS AND RESTRICTIONS BY ENFLKY (For 1.21.1 Port & Modifications)
+Copyright (c) 2026 ENFLKY (AntiGhost 1.21.1 Port)
+
+The 1.21.1 porting logic, specific Mixin implementations, and new features 
+added by Enflky are subject to the following additional terms:
+
+1. PROHIBITION OF STANDALONE REDISTRIBUTION: While the original code is MIT, 
+   this specific 1.21.1 compiled version (JAR) and its porting logic may not 
+   be re-uploaded as a standalone mod entry on any platform (CurseForge, 
+   Modrinth, etc.) without explicit permission from Enflky.
+
+2. MODPACK & CREDIT REQUIREMENT: You are allowed to include this 1.21.1 port 
+   in modpacks ONLY IF:
+   a) The modpack is hosted on CurseForge or Modrinth.
+   b) PROPER CREDIT IS GIVEN to Enflky (for the 1.21.1 port) and the original 
+      authors.
+
+3. DMCA ENFORCEMENT: Any unauthorized re-upload of this specific 1.21.1 
+   distribution that claims to be a new port or fails to provide credit 
+   will be subject to a DMCA takedown notice initiated by Emirh.
+
+4. NO MODIFICATION FOR REDISTRIBUTION: You may not modify Enflky's porting 
+   logic to create a competing 1.21.1 version and redistribute it without 
+   prior consent.
