@@ -4,7 +4,7 @@
     "version": "${mod_version}",
     "environment": "client",
     "entrypoints": {
-        "client": [ "de.guntram.mcmod.antighost.AntiGhost" ]
+        "client": [ "net.enflky.antighost.AntiGhost" ]
     },
     "depends": {
         "fabricloader": ">=0.15.11",
