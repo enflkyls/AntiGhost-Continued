@@ -63,6 +63,6 @@ public class AntiGhost implements ClientModInitializer {
                 }
             }
         }
-        player.sendMessage(Text.translatable("msg.antighost.request"), false);
+        player.sendMessage(Text.translatable("msg.request"), false);
     }
 }
