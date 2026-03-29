@@ -1,30 +1,28 @@
 {
     "schemaVersion": 1,
     "id": "antighost",
-    "version": "${version}",
+    "version": "${mod_version}",
     "environment": "client",
     "entrypoints": {
         "client": [ "de.guntram.mcmod.antighost.AntiGhost" ]
     },
-    "custom": {
-        "modupdater": {
-            "strategy": "json",
-            "url": "https://raw.githubusercontent.com/gbl/ModVersionInfo/master/AntiGhost.json"
-        }
-    },
     "depends": {
-      "fabric-api": "*"
+        "fabricloader": ">=0.15.11",
+        "fabric-api": "*",
+        "minecraft": ">=1.21.1"
     },
     "recommends": {
-        "modmenu" : "*"
+        "modmenu": "*"
     },
     "name": "AntiGhost",
-    "description": "Mod that helps you get rid of ghost blocks around yourself. Use /ghost or type the g key (can be rebound) to request block-resends.",
+    "description": "Mod that helps you get rid of ghost blocks around yourself. Use /ghost or type the G key to request block-resends.",
     "icon": "icon.png",
-    "authors": [ "Giselbaer" ],
+    "authors": [
+        "Enflky"
+    ],
     "contact": {
-        "homepage": "https://www.curseforge.com/minecraft/mc-mods/antighost",
-        "sources": "https://github.com/gbl/AntiGhost",
-        "issues": "https://github.com/gbl/AntiGhost/issues"
+        "homepage": "https://github.com/enflkyls/AntiGhost-Continued",
+        "sources": "https://github.com/enflkyls/AntiGhost-Continued",
+        "issues": "https://github.com/enflkyls/AntiGhost-Continued/issues"
     }
 }

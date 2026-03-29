@@ -1,101 +1,62 @@
-buildscript {
-    dependencies {
-        classpath 'de.guntram.mcmod:crowdin-translate:1.4+1.19-pre2'
-    }
-    repositories {
-        maven {
-            name = 'CrowdinTranslate source'
-            url = "https://minecraft.guntram.de/maven/"
-        }
-    }
-}
-
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
-	id "com.modrinth.minotaur" version "2.+"
-	id "com.matthewprenger.cursegradle" version "1.4.0"
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'maven-publish'
 }
 
-apply plugin: 'de.guntram.mcmod.crowdin-translate'
-crowdintranslate.crowdinProjectName = 'antighost'
-crowdintranslate.minecraftProjectName = 'antighost'
-crowdintranslate.verbose = false
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
 
 repositories {
-	maven {
-		url = "https://maven.fabricmc.net"
-	}
-	maven {
-		url = "https://minecraft.guntram.de/maven/"
-	}
-	maven {
-		url = "https://maven.terraformersmc.com/releases/com/terraformersmc/modmenu/"
-	}
+    maven { url "https://maven.terraformersmc.com/" }
+    mavenCentral()
 }
-
-sourceCompatibility = 17
-targetCompatibility = 17
-
-ext.Versions = new Properties()
-Versions.load(file("Versionfiles/mcversion-1.20.4.properties").newReader())
-
-archivesBaseName = "antighost"
-ext.projectVersion = "1.1.5"
-
-version = "${Versions['minecraft_version']}-fabric${Versions['fabric_versiononly']}-${project.projectVersion}"
-
-loom {
-    mixin.defaultRefmapName = "AntiGhost-refmap.json"
+//Dependencies stuff
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
 processResources {
-    inputs.property "version", project.version
+    inputs.property "mod_version", project.mod_version
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "loader_version", project.loader_version
+    filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        expand "mod_version": project.mod_version,
+                "minecraft_version": project.minecraft_version,
+                "loader_version": project.loader_version
     }
 }
 
-dependencies {
-    minecraft  "com.mojang:minecraft:${Versions['minecraft_version']}"
-    mappings   "net.fabricmc:yarn:${Versions['yarn_mappings']}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${Versions['loader_version']}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${Versions['fabric_version']}"
-    modImplementation "de.guntram.mcmod:crowdin-translate:${Versions['crowdintranslate_version']}"
-    include "de.guntram.mcmod:crowdin-translate:${Versions['crowdintranslate_version']}"
+// Java Stuff
+def targetJavaVersion = Integer.parseInt(project.java_release)
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = targetJavaVersion
 }
 
 java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
     withSourcesJar()
 }
 
 jar {
-	from "LICENSE"
-}
-
-processResources {
-        dependsOn downloadTranslations
-}
-
-import com.modrinth.minotaur.TaskModrinthUpload
-
-modrinth {
-    projectId = 'antighost'
-    versionName = 'antighost'
-    uploadFile = remapJar
-}
-
-curseforge {
-    apiKey = System.getenv("CURSEFORGE_TOKEN") ?: "0"
-    project {
-        id = '273279'
-        releaseType = 'release'
-        addGameVersion("${Versions['minecraft_version']}")
-        addGameVersion("Java "+targetCompatibility)
-        addGameVersion("Fabric")
-        mainArtifact(remapJar)
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}"}
     }
-    options {
-        forgeGradleIntegration = false
-    }
+}
+
+loom {
+    // Mixin
+    // refmap
 }
