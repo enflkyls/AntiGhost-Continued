@@ -50,7 +50,6 @@ public class AntiGhost implements ClientModInitializer {
         if (conn == null) return;
 
         BlockPos pos = player.getBlockPos();
-        .
         for (int dx = -4; dx <= 4; dx++) {
             for (int dy = -4; dy <= 4; dy++) {
                 for (int dz = -4; dz <= 4; dz++) {
