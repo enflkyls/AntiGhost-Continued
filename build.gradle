@@ -19,19 +19,35 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
 processResources {
     inputs.property "mod_version", project.mod_version
     inputs.property "minecraft_version", project.minecraft_version
     inputs.property "loader_version", project.loader_version
+    inputs.property "archives_base_name", project.archives_base_name
+    inputs.property "modmenu_version", project.modmenu_version
+    inputs.property "github_page", project.github_page
+    inputs.property "mod_offical_name", project.mod_offical_name
+    inputs.property "mod_offical_description", project.mod_offical_description
+    inputs.property "mod_offical_environment", project.mod_offical_environment
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
         expand "mod_version": project.mod_version,
                 "minecraft_version": project.minecraft_version,
-                "loader_version": project.loader_version
+                "loader_version": project.loader_version,
+                "archives_base_name": project.archives_base_name,
+                "modmenu_version": project.modmenu_version,
+                "github_page": project.github_page,
+                "mod_offical_name": project.mod_offical_name,
+                "mod_offical_description": project.mod_offical_description,
+                "mod_offical_environment": project.mod_offical_environment,
+                //"example1": project.example,
+                //"example2": project.example2
+
+
     }
 }
 

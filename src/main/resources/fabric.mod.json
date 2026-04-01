@@ -1,28 +1,28 @@
 {
     "schemaVersion": 1,
-    "id": "antighost",
+    "id": "${archives_base_name}",
     "version": "${mod_version}",
-    "environment": "client",
+    "environment": "${mod_offical_environment}",
     "entrypoints": {
         "client": [ "net.enflky.antighost.AntiGhost" ]
     },
     "depends": {
-        "fabricloader": ">=0.18.6",
+        "fabricloader": ">=${loader_version}",
         "fabric-api": "*",
-        "minecraft": "1.21.2"
+        "minecraft": "${minecraft_version}"
     },
     "recommends": {
         "modmenu": "*"
     },
-    "name": "AntiGhost",
-    "description": "Mod that helps you get rid of ghost blocks around yourself. Use /ghost or type the G key to request block-resends.",
+    "name": "${mod_offical_name}",
+    "description": "${mod_offical_description}",
     "icon": "icon.png",
     "authors": [
         "Enflky"
     ],
     "contact": {
-        "homepage": "https://github.com/enflkyls/AntiGhost-Continued",
-        "sources": "https://github.com/enflkyls/AntiGhost-Continued",
-        "issues": "https://github.com/enflkyls/AntiGhost-Continued/issues"
+        "homepage": "${github_page}",
+        "sources": "${github_page}",
+        "issues": "${github_page}/issues"
     }
 }
