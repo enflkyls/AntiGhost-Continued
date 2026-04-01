@@ -2,9 +2,9 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "fabric-1_21_3" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "fabric-1_21_3" ]
 
 jobs:
   build:
