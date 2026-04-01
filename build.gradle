@@ -43,7 +43,7 @@ processResources {
                 "github_page": project.github_page,
                 "mod_offical_name": project.mod_offical_name,
                 "mod_offical_description": project.mod_offical_description,
-                "mod_offical_environment": project.mod_offical_environment,
+                "mod_offical_environment": project.mod_offical_environment
                 //"example1": project.example,
                 //"example2": project.example2
 
