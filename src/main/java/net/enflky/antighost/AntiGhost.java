@@ -27,12 +27,26 @@ public class AntiGhost implements ClientModInitializer {
         KeyBindingHelper.registerKeyBinding(requestBlocks);
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
+
             while (requestBlocks.wasPressed()) {
                 this.execute(client);
             }
         });
 
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            dispatcher.register(
+                    ClientCommandManager.literal("antighost")
+                            .then(ClientCommandManager.literal("reveal").executes(context -> {
+                                this.execute(context.getSource().getClient());
+                                return 1;
+                            }))
+                            .executes(context -> {
+                                this.execute(context.getSource().getClient());
+                                return 1;
+                            })
+            );
+
+            // Kısa yol komutu
             dispatcher.register(
                     ClientCommandManager.literal("ghost").executes(context -> {
                         this.execute(context.getSource().getClient());
@@ -57,7 +71,8 @@ public class AntiGhost implements ClientModInitializer {
                     PlayerActionC2SPacket packet = new PlayerActionC2SPacket(
                             PlayerActionC2SPacket.Action.ABORT_DESTROY_BLOCK,
                             targetPos,
-                            Direction.UP
+                            Direction.UP,
+                            0
                     );
                     conn.sendPacket(packet);
                 }

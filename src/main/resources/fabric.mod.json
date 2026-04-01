@@ -7,9 +7,9 @@
         "client": [ "net.enflky.antighost.AntiGhost" ]
     },
     "depends": {
-        "fabricloader": ">=0.15.11",
+        "fabricloader": ">=0.18.6",
         "fabric-api": "*",
-        "minecraft": ">=1.21.1"
+        "minecraft": "1.21.2"
     },
     "recommends": {
         "modmenu": "*"
