@@ -1,10 +1,10 @@
-name: Java CI with Gradle
+name: Builder
 
 on:
   push:
-    branches: [ "fabric-1_21_3" ]
+    branches: [ "fabric-*" ]
   pull_request:
-    branches: [ "fabric-1_21_3" ]
+    branches: [ "fabric-*" ]
 
 jobs:
   build:
