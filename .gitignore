@@ -2,3 +2,5 @@ build
 .gradle
 .nb-gradle
 .idea
+/.idea/
+/.idea/
