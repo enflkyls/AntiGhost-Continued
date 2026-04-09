@@ -22,13 +22,12 @@ public class AntiGhost implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        final String category = "key.categories.antighost";
 
         requestBlocks = new KeyBinding(
                 "key.antighost.reveal",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_G,
-                category
+                MinecraftClient.getInstance().options.jumpKey.getCategory()
         );
 
         KeyBindingHelper.registerKeyBinding(requestBlocks);
