@@ -9,6 +9,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -23,11 +24,16 @@ public class AntiGhost implements ClientModInitializer {
     public void onInitializeClient() {
         final String category = "key.categories.antighost";
 
-        requestBlocks = new KeyBinding("key.antighost.reveal", GLFW.GLFW_KEY_G, category);
+        requestBlocks = new KeyBinding(
+                "key.antighost.reveal",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_G,
+                category
+        );
+
         KeyBindingHelper.registerKeyBinding(requestBlocks);
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-
             while (requestBlocks.wasPressed()) {
                 this.execute(client);
             }
@@ -46,7 +52,6 @@ public class AntiGhost implements ClientModInitializer {
                             })
             );
 
-            // Kısa yol komutu
             dispatcher.register(
                     ClientCommandManager.literal("ghost").executes(context -> {
                         this.execute(context.getSource().getClient());
